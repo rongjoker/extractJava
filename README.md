@@ -9,6 +9,9 @@
 [redis&mysql](src/main/resources/document/redis2mysql.md)
 <br>
 
+[aws](src/main/resources/document/aws.md)
+<br>
+
 [面经](src/main/resources/document/interview.md)
 <br>
 
