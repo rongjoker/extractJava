@@ -22,3 +22,20 @@ sql  window function
 <br>
 
 redis有没有用过，常用的数据结构以及在业务中使用的场景，redis的hash怎么实现的，rehash过程讲一下和JavaHashMap的rehash有什么区别？redis cluster有没有了解过，怎么做到高可用的？redis的持久化机制，为啥不能用redis做专门的持久化数据库存储？
+
+<br>
+1.简历上写，精通spring框架，问一下aop的原理，回答我只会用，不知道原理。
+<br>
+2.简历上写熟悉linux，问几个简单的命令，回答我都是用的时候百度的，记不住。
+<br>
+3.简历上写精通Java基础，问io，nio的区别，回答什么是nio。
+<br>
+4.简历上写熟悉redis，问怎么持久化，回答我只会简单的存取。
+
+
+<br>
+发现cpu使用率99.9%，符合死循环的情况。
+然后再使用 jps 和 jstack 命令查看一下进程的状态
+但是1.8是在链表转换树或者对树进行操作的时候会出现线程安全的问题。
+ConurrentHashMap
+1.8抛弃分段锁，转为用CAS+synchronized来实现，同样HashEntry改为Node，也加入了红黑树的实现。主要还是看put的流程。
