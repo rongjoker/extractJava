@@ -23,6 +23,7 @@
 
 <br>
 TCC 分为 3 个阶段（Try-Confirm-Cancel）<br>
+早年用过Atomikos
 使用过ByteTCC分布式事务框架，可以集成到spring里,分别写三个接口方法
 
 <br>

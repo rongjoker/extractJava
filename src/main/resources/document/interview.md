@@ -39,3 +39,20 @@ redis有没有用过，常用的数据结构以及在业务中使用的场景，
 但是1.8是在链表转换树或者对树进行操作的时候会出现线程安全的问题。
 ConurrentHashMap
 1.8抛弃分段锁，转为用CAS+synchronized来实现，同样HashEntry改为Node，也加入了红黑树的实现。主要还是看put的流程。
+
+<br>
+map底层结构
+dict和压缩表 转换
+还有Java怎么解决aba问题的
+你知道spring有哪些扩展点
+数据库的主从复制
+多线程操作数据库，用普通的连接，一定会出现线程安全问题嘛，用锁也不行？我看网上都用连接池
+就是按年龄，0~10，10~20，20~30等等，统计人数
+sql  window function 
+对 底层结构  还有上层和底层的映射  如何实现这种
+
+好像直接嵌套查就可以了… select count(*) from ( select age div 10 as age_group from users ) group by age_group
+
+
+redis有没有用过，常用的数据结构以及在业务中使用的场景，redis的hash怎么实现的，rehash过程讲一下和JavaHashMap的rehash有什么区别？redis cluster有没有了解过，怎么做到高可用的？redis的持久化机制，为啥不能用redis做专门的持久化数据库存储？
+
