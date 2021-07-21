@@ -29,7 +29,12 @@ dynamoDB直接托管、一键部署、自动扩容
 
 
 ### ELB 负载均衡器:Elastic Load Balancing
-对外暴露负载均衡服务器即可+ OpenFeign做代理访问
+对外暴露负载均衡服务器即可+ OpenFeign做代理访问 + API Gateway；调用 API gateway 的 endpoint
 
 
 ### SQS 简单消息队列服务:Simple Queue Service
+
+
+###  aws lambda:Amazon Serverless Application Model(Amazon SAM）
+lambda 配合sam一起实用
+
