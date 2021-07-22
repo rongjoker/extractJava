@@ -128,6 +128,9 @@ Read Committed - 一个事务读取数据时总是读这个数据最近一次被
 Repeatable Read - 一个事务读取数据时总是读取当前事务开始之前最后一次被commit的版本（所以底层实现时需要比较当前事务和数据被commit的版本号）。
 会导致【幻读Phantom Read】：当用户读取某范围数据行时，另一事务在此范围内插入新行，当用户再次读取此范围数据行时，读取到新的幻影行。
 比如A更新了大于11的数据，同时B提交了一条18的新数据；A再次查询发现有一条大于11的没有被更新
+可见，幻读就是没有读到的记录，以为不存在，但其实是可以更新成功的，并且，更新成功后，再次读取，就出现了
+当前读和快照度 的区别
+
 Serializable：最高的隔离级别，它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题
 
 
@@ -136,7 +139,38 @@ repeatable read 解决幻读
 MVCC会给每行元组加一些辅助字段，记录创建版本号和删除版本号。
 而每一个事务在启动的时候，都有一个唯一的递增的版本号。每开启一个新事务，事务的版本号就会递增。
 
+快照读(Snapshort Read / Consistent Read)之间通过MVCC实现。
+当前读(Current Read / Locking Read)之间由Next-Key Lock(同时添加间隙锁与行锁称为Next-key lock)实现。
+快照读与当前读之间仍然有幻读。
+
 
 [MVCC](https://www.zhihu.com/question/279538775/answer/407458020)
+
+
+### acid
+<br>isolation 隔离由 锁 实现
+<br> consistency 一致性 由 undo log来保证,帮助事务回滚+MVCC
+<br> atomicity durable 由 redo log来实现 每次都将重做日志缓存 写入重做日志文件，再调用一次fsync操作,顺序写入
+<br> Durability（持久性）：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。
+<br> 额外还有一个binlog，跟redo log很像，但是redo log是在innodb引擎层面产生，而binlog是在数据库上层，任何修改都会产生binlog，binlog是一种逻辑日志，记录的是sql语句；redo log是物理格式日志，记录的是对于每一页的修改。
+<br>binlog只要由事务提交完成就会进行写入；redo log是并发的，不是在事务提交时候写入，记录的顺序并不是事务开始的顺序。
+<br> 事务执行失败或者接收到rollback命令进行回滚，可以利用undo log回滚到修改之前的样子。undo log也是 逻辑日志。
+<br> mvcc也是用undo log实现，用户读取一行记录，如果该记录已经被其他事务占用，当前事务可以通过undo读取之前的行版本信息，实现非锁定读取
+<br> undo log 也会产生redo log，因为undo log也需要持久性的保护
+
+
+### mysql window function 
+
+```
+SELECT
+	`姓名`,
+	`班级`,
+	`人气`,
+	rank() over w1 AS rak
+FROM
+	`民工漫班级` window w1 AS ( PARTITION BY `班级` ORDER BY `人气` DESC );
+
+
+```
 
 
