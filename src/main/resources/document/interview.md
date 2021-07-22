@@ -56,3 +56,9 @@ sql  window function
 
 redis有没有用过，常用的数据结构以及在业务中使用的场景，redis的hash怎么实现的，rehash过程讲一下和JavaHashMap的rehash有什么区别？redis cluster有没有了解过，怎么做到高可用的？redis的持久化机制，为啥不能用redis做专门的持久化数据库存储？
 
+<br>
+A服务和B服务互相调用，A发起通知后，B调用A的数据，还是之前的（事务没有执行完）
+如果解决
+<br>
+上线后redis服务突然暴增
+
