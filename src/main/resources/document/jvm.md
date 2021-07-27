@@ -57,3 +57,7 @@ JDBC中通过引入ThreadContextClassLoader（线程上下文加载器，默认�
 
 对象优先在 eden 创建并区分配内存，当 eden 区内存无法为一个新对象分配内存时，就会触发 Minor GC
 如果OldGeneration满了就会产生FullGC
+
+### cglib
+
+getIndex中对Test类的每个方法根据hash建立索引，invoke根据指定的索引，直接调用目标方法，避免了反射调用。所以当调用methodProxy.invokeSuper方法时，实际上是调用代理类的CGLIB$add$0方法，CGLIB$add$0直接调用了委托类的add方法。

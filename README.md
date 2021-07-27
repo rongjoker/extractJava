@@ -9,6 +9,9 @@
 [redis&mysql](src/main/resources/document/redis2mysql.md)
 <br>
 
+[solr&es](src/main/resources/document/solr2es.md)
+<br>
+
 [jvm相关](src/main/resources/document/jvm.md)
 <br>
 

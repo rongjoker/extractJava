@@ -35,7 +35,7 @@ Spring-boot最新默认cache即支持空对象,为空则保存org.springframewor
 
 缓存雪崩:大量缓存同时失效,db面临同时大量请求涌入
 
-
+登录 redis-cli 命令行，输入monitor，即可进入到 redis 监控模式。
 
 ### redis 持久化
 RDB(Redis DataBase) 开启子进程，创建RDB
@@ -104,10 +104,12 @@ mysql-innodb索引底层采用b+树的数据结构，并且只在叶子节点下
 
 
 ### jvm
+
 操作系统层面，进程运行有5个状态：运行态、就绪态、阻塞态、创建态、结束态。jvm的线程调用的是内核线程。
 
 
 ### spring && es&&devops
+
 spring的核心是ioc和aop以及实现了servlet协议和http路由管理。ioc是将所有的bean进行统一创建和分配管理，不需要开发中编写大量的创建、初始化和配置，专心于具体的功能开发即可，从面向对象的角度来说，ioc提高了项目的抽象程度，隐藏依赖的bean的实现细节，方便封装。aop为面向切面编程，方便在已经开发好的代码里追加功能，比如日志记录、数据校验等等。<br>
 es 包含检索和排序两块核心，检索基于倒排索引；排序采用tf * idf算法，词频（term frequency，TF）指的是某一个给定的词语在该文件中出现的频率;某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目.这个算法的核心要义就是一个词在一个文档里出现的频率很高，而在所有文档里出现的频率较低，那么检索这个词的时候，这个文档排名就会靠前。<br>
 devops本质是提高了增量开发的可行性，在以迭代推进的敏捷开发模式中尤其有效。
@@ -115,6 +117,10 @@ devops本质是提高了增量开发的可行性，在以迭代推进的敏捷�
 ### 索引下推
 
 Index Condition Pushdown（索引下推） MySQL 5.6引入了索引下推优化，默认开启，使用SET optimizer_switch = ‘index_condition_pushdown=off’;可以将其关闭。官方文档中给的例子和解释如下： people表中（zipcode，lastname，firstname）构成一个索引SELECT * FROM people WHERE zipcode=‘95054’ AND lastname LIKE ‘%etrunia%’ AND address LIKE ‘%Main Street%’;如果没有使用索引下推技术，则MySQL会通过zipcode='95054’从存储引擎中查询对应的数据，返回到MySQL服务端，然后MySQL服务端基于lastname LIKE '%etrunia%'和address LIKE '%Main Street%'来判断数据是否符合条件。 如果使用了索引下推技术，则MYSQL首先会返回符合zipcode='95054’的索引，然后根据lastname LIKE '%etrunia%'和address LIKE '%Main Street%'来判断索引是否符合条件。如果符合条件，则根据该索引来定位对应的数据，如果不符合，则直接reject掉。 有了索引下推优化，可以在有like条件查询的情况下，减少回表次数。
+
+最关键的一点都没提到：
+组合索引满足最左匹配，但是遇到非等值判断时匹配停止。
+name like '陈%' 不是等值匹配，所以 age = 20 这里就用不上 (name,age) 组合索引了。如果没有索引下推，组合索引只能用到 name，age 的判定就需要回表才能做了。5.6之后有了索引下推，age = 20 可以直接在组合索引里判定。
 
 ### MVCC Multi-Version Concurrency Control，即多版本并发控制
 
@@ -173,4 +179,12 @@ FROM
 
 ```
 
+### MRR
+
+MySQL 从磁盘读取页的数据后，会把数据放到数据缓冲池，下次如果还用到这个页，就不需要去磁盘读取，直接从内存读。
+索引本身就是为了减少磁盘 IO，加快查询，而 MRR，则是把索引减少磁盘 IO 的作用，进一步放大
+
+### 红包雨案例
+
+这个红包特效和金额直接交给前端搞就好，后台主要做防盗刷（后台训练一个人类点击模型，前端把点击时间、点击坐标发送过来，最后一次请求就把钱发下去就行了），最后再做一下风控（设备、手机号、实名信息等）
 

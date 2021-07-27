@@ -62,3 +62,40 @@ A服务和B服务互相调用，A发起通知后，B调用A的数据，还是之
 <br>
 上线后redis服务突然暴增
 
+
+
+<br>
+cap&&cas
+
+<br>
+mysql 
+select * where id >6 for update
+
+spring 事务内如果保证事务提交后再执行其他操作(可能是热门题目)
+
+mysql 主键索引和唯一索引
+
+
+update set xx=dd where id =1
+
+inset id = 5
+
+JDK源码对应的设计模式
+
+
+单例模式 是否线程安全
+
+spring bean 是否线程安全
+
+servlet 是否线程安全
+
+线程池参数
+
+
+@Async 实现
+
+分布式锁的集中方案，除了redis和zk还有其他吗？
+
+
+
+
