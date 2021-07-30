@@ -149,6 +149,8 @@ MVCC会给每行元组加一些辅助字段，记录创建版本号和删除版�
 当前读(Current Read / Locking Read)之间由Next-Key Lock(同时添加间隙锁与行锁称为Next-key lock)实现。
 快照读与当前读之间仍然有幻读。
 
+在快照读的时候，每次读取都会产生一个（readview）可读视图
+
 
 [MVCC](https://www.zhihu.com/question/279538775/answer/407458020)
 

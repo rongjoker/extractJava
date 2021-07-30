@@ -15,6 +15,12 @@ java可以利用Syschronized、ReentrantLock、AtomicInteger类实现线程安�
 
 ### volatile && synchronized
 
+CPU有缓存一致性协议：MESI，这不错。但MESI并非是无条件生效的！
+java虚拟机在实现volatile关键字的时候，是写入了一条lock 前缀的汇编指令。
+lock 前缀的汇编指令会强制写入主存，也可避免前后指令的CPU重排序，并及时让其他核中的相应缓存行失效，从而利用MESI达到符合预期的效果。
+非lock前缀的汇编指令在执行写操作的时候，可能是是不生效的。比如前面所说的Store Buffer的存在，lock前缀的指令在功能上可以等价于内存屏障，可以让其立即刷入主存。
+是volatile的底层实现，满足了MESI的触发条件，才让变量有了缓存一致性。
+
 
 ## java并发编程相关
 ### AQS
@@ -106,3 +112,17 @@ https://www.jianshu.com/p/a4f84658a7e8
 
 r大的博客
 https://www.iteye.com/blog/user/rednaxelafx
+
+
+### ThreadLocal 内存泄漏的原因
+从上图中可以看出，hreadLocalMap使用ThreadLocal的弱引用作为key，如果一个ThreadLocal不存在外部强引用时，Key(ThreadLocal)势必会被GC回收，这样就会导致ThreadLocalMap中key为null， 而value还存在着强引用，只有thead线程退出以后,value的强引用链条才会断掉。
+
+但如果当前线程再迟迟不结束的话，这些key为null的Entry的value就会一直存在一条强引用链：
+
+Thread Ref -> Thread -> ThreaLocalMap -> Entry -> value
+永远无法回收，造成内存泄漏。
+
+由于ThreadLocalMap中的key是ThreadLocal的弱引用，一旦发生GC便会回收ThreadLocal，那么此时的ThreadLocalMap存储的key便是null。如果不通过手动remove()那么ThreadLocalMap的Entry便伴随线程的整个生命周期造成内存泄漏，大致就是一个thread ref -> thread -> threadLocals -> entry -> value的强引用关系。因此Java其实是有对于内存泄漏的一些预防机制的，每次调用ThreadLocal的set()、get()、remove()方法时都会回收key为空的Entry的value。
+
+那么为什么ThreadLocalMap的key要设计成弱引用呢？其实很简单，如果key设计成强引用且没有手动remove()，那么key会和value一样伴随线程的整个生命周期，如果key是弱引用，被GC后至少ThreadLocal被回收了，在下一次的set()、get()、remove()还会回收key为null的Entry的value。
+
