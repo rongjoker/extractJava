@@ -126,3 +126,16 @@ Thread Ref -> Thread -> ThreaLocalMap -> Entry -> value
 
 那么为什么ThreadLocalMap的key要设计成弱引用呢？其实很简单，如果key设计成强引用且没有手动remove()，那么key会和value一样伴随线程的整个生命周期，如果key是弱引用，被GC后至少ThreadLocal被回收了，在下一次的set()、get()、remove()还会回收key为null的Entry的value。
 
+### ThreadPoolExecutor的拒绝策略RejectedExecutionHandler
+
+自定义拒绝策略：
+```
+class MyRejectedExecutionHandler implements RejectedExecutionHandler {
+    @Override
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+        new Thread(r,"新线程"+new Random().nextInt(10)).start();
+    }
+}
+
+```
+

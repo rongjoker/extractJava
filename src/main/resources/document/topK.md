@@ -1,7 +1,11 @@
-##[面试题 17.14. 最小K个数](https://leetcode-cn.com/problems/smallest-k-lcci/)
+## topK
 
-~~~java
-//大根堆实现
+
+### 题目
+[面试题 17.14. 最小K个数](https://leetcode-cn.com/problems/smallest-k-lcci/)
+
+```
+### 大根堆实现
 public int[] _smallestK(int[] arr, int k) {
         if (k == 0 || k > arr.length)
             return new int[0];
@@ -24,7 +28,12 @@ public int[] _smallestK(int[] arr, int k) {
         return res;
     }
 
-//快排思想实现
+```
+
+
+### 快排思想实现
+
+```
 public void kth_elem(int[] a, int low, int high, int k) {
         int pivot = a[low];
         int low_temp = low, high_temp = high;
@@ -54,3 +63,5 @@ public void kth_elem(int[] a, int low, int high, int k) {
             res[i] = arr[i];
         return res;
     }
+
+```
