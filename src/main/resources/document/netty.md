@@ -204,3 +204,16 @@ nio代码:
 
 IO所需要的CPU资源非常少。大部分工作是分派给DMA完成的。
 DMA（Direct Memory Access）
+
+
+### 几大问题
+
+1.Tomcat线程模型如何实现，为何不用Netty？ 
+2.Tomcat的NIO和NIO2有何区别？怎么选择？ 
+3.Netty线程模型如何实现？
+4.什么是EventLoop？什么是EventLoopGroup ？
+5.Netty线程模型在使用中有什么需要注意的？ 
+6.Netty的Channel如何处理的？线程安全吗？ 
+7.Netty如何实现Java层面的零拷贝的？ 
+8.Linux内核IO操作实现原理了解吗？ 
+9.Linux内核如何实现零拷贝？
