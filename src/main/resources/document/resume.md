@@ -1,27 +1,18 @@
 
 # 张士鹏-Java工程师
 
- - 张士鹏/男/1990/17769367389/magic_of_java@foxmail.com
-
+ - 男/1990/17769367389/magic_of_java@foxmail.com
+ 
 ### 技术栈
- - Java/Spring全家桶/Solr/Javascript/vue.js/python/linux
+ - Java/Spring全家桶/Solr/Javascript/vue.js/python
 
 ### 工作经历
 
- - 欣和食品: 2018/3 Java高级工程师 | 2019/2 服务端负责人 | 2020/12 晋升Java资深开发工程师
+ - 欣和食品: 2018/3 Java高级工程师 | 2019/2 服务端负责人 | 2020/12 晋升Java资深工程师
  - 鲜衣网络: 2017/5 Java高级工程师 | 2017/8 开发组长
- - 恺英网络: 2015/10 Java搜索工程师 | 2016/3 xy苹果手机助手搜索模块负责人
- - 通路快建: 2014/3 Java工程师
- - 普华诚信: 2012/3 Java工程师 ｜ 2012/10 徐汇工商网络监管项目主程 | 2013/5 湖北工商网络监管项目主程
- 
-### 技术成果
-
-- [quarantineJ](https://github.com/rongjoker/quarantineJ) ：旨在替换掉tomcat+spring的基于netty+google-guice，支持ioc,router,aop,restful的极简后端框架 
-- [TextExtractor](https://github.com/rongjoker/TextExtractor) ：实现网页正文提取、高亮显示等功能的工具包，依赖于JSoup的Jar包，修正了boilerpipe的部分解析错误的情况
-- [lucene-similarity-kn](https://github.com/rongjoker/lucene-similarity-kn) ：在lucene基础上修改lucene打分算法，添加ApplistSolrSimilarity，取消词条频率影响，减弱fieldNorm长度影响 
-      
-
-
+ - 恺英网络: 2015/10 Java搜索工程师 | 2016/3 搜索模块负责人
+ - 通路快建: 2014/3 项目主程
+ - 普华诚信: 2012/3 Java工程师 ｜ 2012/10 项目主程 
 ### 项目经验
 
 #### AIO
@@ -67,6 +58,12 @@
 
 ### 自我介绍
 自2011年以一直从事Java相关的开发工作。长期保持对技术的热情，拥抱前后端技术，思维开放。
+
+### 技术成果
+
+- [quarantineJ](https://github.com/rongjoker/quarantineJ) ：旨在替换掉tomcat+spring的基于netty+google-guice，支持ioc,router,aop,restful的极简后端框架 
+- [TextExtractor](https://github.com/rongjoker/TextExtractor) ：实现网页正文提取、高亮显示等功能的工具包，依赖于JSoup的Jar包，修正了boilerpipe的部分解析错误的情况
+- [lucene-similarity-kn](https://github.com/rongjoker/lucene-similarity-kn) ：在lucene基础上修改lucene打分算法，添加ApplistSolrSimilarity，取消词条频率影响，减弱fieldNorm长度影响 
 
 ### 教育经历
 
