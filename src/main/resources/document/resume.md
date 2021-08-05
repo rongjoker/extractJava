@@ -28,8 +28,8 @@
  
  - 功能: 门店地推、订单管理、绩效管理、业务员智能派单等
  - 角色: 主程+服务端负责人
- - 技术栈: Spring-boot、Mysql、Redis、ElasticSearch、AWS S3等
- - 难点: Spring-cloud+AWS云服务实现项目微服务化和devops化;上海与公司全国其他分部的每日80w-130w条数据对接、清洗以及存储;网络不稳定情况下业务员离线处理任务
+ - 技术栈: Spring-boot、Mysql、Redis、ElasticSearch、AWS ELB、AWS EC2、AWS S3等
+ - 难点: 采用整套AWS云服务实现项目微服务化和持续集成;上海与公司全国其他分部的每日80w-130w条数据对接、清洗以及存储;网络不稳定情况下业务员离线处理任务
  
 
 #### xy苹果手机助手搜索模块
