@@ -139,3 +139,4 @@ class MyRejectedExecutionHandler implements RejectedExecutionHandler {
 
 ```
 
+工作内存并不是在内存中分配一块空间给线程，而是cache 和寄存器的一个抽象
