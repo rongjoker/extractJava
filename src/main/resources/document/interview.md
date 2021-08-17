@@ -287,7 +287,8 @@ redis热key
 解决mysql慢查询
 对微服务的理解
 一致性hash
-算法：有序数组去重
+<br>
+[算法：有序数组去重](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
 
 
 ### Spi
