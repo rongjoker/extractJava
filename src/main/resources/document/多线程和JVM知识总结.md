@@ -566,7 +566,7 @@
 # 测试
 > 编写线程A，A线程中循环执行一个任务，外部线程可以中断A线程
 
-```java
+```
     private  static volatile  boolean falg=true;
     public static  void doTask(){
         System.out.println("doTask..........");
@@ -604,7 +604,8 @@
 
 > 如果保证A,B,C三个线程顺序执行打印
 
-```java
+```
+
  public static  void  test1() throws Exception{
         Thread a=new Thread(new Runnable() {
             @Override
