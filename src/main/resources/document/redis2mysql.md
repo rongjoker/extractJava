@@ -36,6 +36,14 @@ Spring-boot最新默认cache即支持空对象,为空则保存org.springframewor
 ### big key
 
 
+### mset pipeline
+
+
+
+### 一致性hash
+
+
+
 ### redis 持久化
 RDB(Redis DataBase) 开启子进程，创建RDB
 AOF(Append only file) 保存数据库中的键值对，AOF保存写命令的log来还原数据，更新频率更高
